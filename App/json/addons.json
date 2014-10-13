@@ -1,0 +1,45 @@
+{
+	"lighting":[
+		{"ambient": {	
+								"price": "100",
+								"sku":""
+								}					 
+		},
+		
+		{"Spot Lit": {	
+									"price": "100",
+									"sku":""
+									}
+		},
+		
+		{"Overhead": {	
+									"price": "100",
+									"sku":""
+									}	
+		},
+		
+		{"Two corner": {	
+									"price": "100",
+									"sku": ""
+									}
+		},
+		
+		{"Four Corner": {
+									"price": "100",
+									"sku":""
+										}							
+		}
+	],
+	
+	"toekick": [
+		{"Matching Kick": {	"price": "100",
+												"sku":""
+											}
+		},
+		
+		{"Black Toekick": {	"price": "100",
+												"sku":""
+											}
+								}
+	]
+}

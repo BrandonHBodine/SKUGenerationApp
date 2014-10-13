@@ -1,0 +1,13 @@
+{
+	"heights": {
+		"fivesider": ["12","18","24","30","36","42"],
+		"cylinder": [], 
+		"cubetable": []
+	},
+	
+	"footprints": {
+		"fivesider": ["11.5 x 15","15 x 15","18 x 18","20 x 20","23 x 23"],
+		"cylinder": [], 
+		"cubetable": []
+	}
+}

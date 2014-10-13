@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SKU PRICE GENERATOR</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center">Xylem Price Updater</h1>
+			<p class="text-center">Based of Calculators by Brad Littrell</p>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<form id="priceGen">
+					<label for="types">Types</label>	
+					<select id="types" class="types" name="Type">
+						<option><strong>Type of Pedestal</strong></option>
+					</select>
+				</div>
+				<div class="col-md-3">
+							<label for="finishes">Types</label>	
+					<select id="finishes" class="finish" name="Finish">
+						<option><strong>Finish</strong></option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<label for="footprints">Foot Prints</label>
+					<select id="footprints" class="footprints" name="Foot Print">
+						<option><strong>Foot Prints</strong></option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<label for="heights">Heights</label>
+					<select id="heights" class="heights" name="Height">
+						<option><strong>Heights</strong></option>
+					</select>
+				</div>
+			</div>
+
+			<label for="addons"></label>
+				<fieldset>
+					<legend>Toekicks</legend>
+						<input type="radio" name="toekick" value="None" checked="checked">None
+						<input type="radio" name="toekick" value="Black Toekick" >Black Toekick
+						<input type="radio" name="toekick" value="Matching Toekick" >Matching Toekick
+				</fieldset>
+				<fieldset>
+					<legend>Lighting</legend>
+						<input type="radio" name="lighting" value="None" checked="checked">None
+						<input type="radio" name="lighting" value="Ambient" >Ambient
+						<input type="radio" name="lighting" value="Spotlight" >Spotlight
+						<input type="radio" name="lighting" value="Overhead" >Overhead
+						<input type="radio" name="lighting" value="Two Corner Lights" >Two Corner Lights
+						<input type="radio" name="lighting" value="Four Corner Lights" >Four Corner Lights
+				</fieldset>
+				<fieldset>
+					<legend>Turn Tables</legend>
+						<input type="radio" name="turntable" value="None" checked="checked">None
+						<input type="radio" name="turntable" value="Manual" >Manual 
+						<input type="radio" name="turntable" value="Motorized" >Motorized
+				</fieldset>
+
+			<label for="types">Percent Off</label>
+			<input type="number" name="% Off" min="0" max="30" step="1" placeholder="0">
+		</form>
+		<section>
+			<button class="generate btn btn-defaul">Generate Five Siders</button>
+			<button class="generate-cylinders btn btn-defaul">Generate Cylinders</button>
+			<button class="generater-tapered btn btn-defaul">Generate Tapered</button>
+			<button class="generater-dust-cover btn btn-defaul">Generate Dust Covers</button>
+			<table class="table table-hover">
+				<tbody id="price-table">
+					<tr>
+						<th class="sku">SKU</th>
+						<th class="size">SIZE</th>
+						<th class="price">PRICE</th>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/pedestal.js"></script>
+	<script src="js/cylinder.js"></script>
+	<script src="js/taperedColumn.js"></script>
+	<script src="js/dustCover.js"></script>
+</body>
+</html>
