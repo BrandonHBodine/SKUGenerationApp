@@ -7,6 +7,7 @@ var types = $("#types"),
 		generateTapered = $(".generate-tapered"),
 		generateCylinder = $(".generate-cylinder"),
 		generateDustCover = $(".generate-dust-cover"),
+		generateCubeTable = $(".generate-cube-table"),
 		clearTable = $(".clear-table"),
 		tr = $("tr"),
 		melamines = ["BL", "WH"],
@@ -98,6 +99,10 @@ $( document ).ready(function() {
 	
 	generateDustCover.on("click", function(){
 		dustCover.generator();
+	});
+	
+		generateCubeTable.on("click", function(){
+		cubeTable.generator();
 	});
 	
 	$( "tr" ).on("click", function(){

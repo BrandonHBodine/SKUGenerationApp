@@ -167,7 +167,7 @@ Event Functions
 		for (var m = 0; m < melamines.length; m++){
 			
 			calcVersion = cubeTable.melaminePriceCalc;
-			starter = "CUBE";
+			starter = "CUBEL";
 			color = melamines[m];
 			cubeTable.tableBuilder();
 			
@@ -176,7 +176,7 @@ Event Functions
 		for (var l = 0; l < laminates.length; l++){
 			
 			calcVersion = cubeTable.laminatePriceCalc;
-			starter = "CUBE";
+			starter = "CUBEL";
 			color = laminates[l];
 			cubeTable.tableBuilder();
 		} // Laminates Loop End
@@ -184,7 +184,7 @@ Event Functions
 		for (var b = 0; b < aluminums.length; b++){
 			
 			calcVersion = cubeTable.aluminumPriceCalc;
-			starter = "CUBE";
+			starter = "CUBEL";
 			color = aluminums[b];
 			cubeTable.tableBuilder();
 	
@@ -193,7 +193,7 @@ Event Functions
 		for (var v = 0; v < veneers.length; v++){
 			
 			calcVersion = cubeTable.veenerPriceCalc;
-			starter = "CUBE";
+			starter = "CUBEV";
 			color = veneers[v];
 			cubeTable.tableBuilder();
 
