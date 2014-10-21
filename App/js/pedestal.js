@@ -141,11 +141,6 @@ Standard Sizes need to be calculated by Math.floor((width*depth)+(width+depth)+h
 Event Functions
 ******************************************************************************************************************************/
 	"generator": function(){		
-		/*
-		event.preventDefault();
-		event.stopPropagation();
-		*/
-
 		for (var m = 0; m < melamines.length; m++){
 			
 			calcVersion = pedestal.melaminePriceCalc;
