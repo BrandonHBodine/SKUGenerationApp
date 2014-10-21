@@ -12,7 +12,7 @@ var cubeTable = {
 	"woodVeneerAllowance" : 20,
 	"alumAllowance" : 30,
 	"standardSizes" : [],	
-	"standardSizesPrice" : [],
+	"standardSizesPrice" : [17],
 	"standardWidthsDepths" : [18, 23],
 	"standardHeights" : [18, 23],
 	"topOptions" : ["N", "T", "L", "SL", "4L"],
@@ -42,14 +42,29 @@ var cubeTable = {
 	},
 
 	"packaging" : function(width, depth, height){		
-		var check = cubeTable.isStandard(width, depth, height),
-				x;
-		if (check > -1) {
-			return cubeTable.standardSizesPrice[(check)];
-		} else {
-			x = (cubeTable.materialFoot(width, depth, height)*0.2)+(cubeTable.laborHours(width, depth, height)*3.5)+30;
-			return (Math.round(x * 100000))/100000;
-		}
+		var x;
+			if (cubeTable.isStandard) {
+				/*Since the packaging cost are not calcuable I will check through a list of the standard sizes*/
+				/* 18 X 18X 18*/
+				if (depth === 18 && height === 18) {
+					return 17.61;
+				}
+				/*18 X 18 X 23*/
+				else if (depth === 18 && height === 23) {
+					return 19.08;
+				}
+				/*23 X 23 X 18*/
+				else if (depth === 23 && height === 18) {
+					return 21.00;
+				}
+				/*23 X 23 X 23*/
+				else if (depth === 23 && height === 23) {
+					return 23.75;
+				}
+			} else {
+				x = (cubeTable.materialFoot(width, depth, height)*0.2)+(cubeTable.laborHours(width, depth, height)*3.5)+30;
+				return (Math.round(x * 100000))/100000;
+			}
 	},
 	
 	"nonStandardSizeCorrection": function(width, depth, height) {
@@ -66,6 +81,12 @@ var cubeTable = {
 				packagingCalc = ( cubeTable.packaging(width, depth, height) ),
 				salesCalc = ( 100 / (100 - cubeTable.bwAllowance -cubeTable.customsSizeVar2)),
 				price = (laborCalc + materialsCalc * profitCalc + packagingCalc ) * ( salesCalc ) * cubeTable.nonStandardSizeCorrection(width, depth, height);
+		
+		console.log("laborCalc: "  + laborCalc)
+		console.log("materialsCalc: "  + materialsCalc)
+		console.log("profitCalc: "  + profitCalc)
+		console.log("packagingCalc: "  + packagingCalc)
+		console.log("salesCalc: "  + salesCalc)
 		
 		return (Math.round( price * 100))/100;
 	},
@@ -192,7 +213,7 @@ Event Functions
 				depth = cubeTable.standardWidthsDepths[i];
 
 				for (var h = 0; h < cubeTable.standardHeights.length; h++) {
-					// Iterate through the hieghts
+					// Iterate through the heights
 					
 					for (var top = 0; top < cubeTable.topOptions.length; top++) {
 						// Top Options Interation
@@ -201,7 +222,7 @@ Event Functions
 							// Bottom Options Iterations
 		
 							
-								/* Calculate the price of all each hieght widht depth combonations */
+								/* Calculate the price of all each height widht depth combonations */
 								var x = calcVersion(width, depth, cubeTable.standardHeights[h]),
 												topAddOnPrice = cubeTable[cubeTable.topOptions[top]].price(width),
 												bottomAddOnPrice = cubeTable[cubeTable.bottomOptions[bottom]].price(width),
