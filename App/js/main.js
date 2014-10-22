@@ -14,6 +14,8 @@ var types = $("#types"),
 		laminates = ["BSG", "BLAL", "AT", "ST", "GT", "BGL", "WGL"],
 		aluminums = ["BAL", "CFL"],
 		veneers = ["WL", "CH", "OK", "MH", "EBWL", "ML", "ZB", "BN", "BC"],
+		topAddOns = [],
+		bottomAddOns = [],
 		selectedType = "",
 		width,
 		depth,
@@ -136,7 +138,7 @@ $( document ).ready(function() {
 		choiceArray.push("Dimensions");
 		selector = choiceArray.join("");
 		console.log(selector);
-		if(selector === "fivesiderDimensions" || selector === "cubetableDimensions") {
+		if(selector === "fivesiderDimensions" || selector === "cubetableDimensions" || selector === "taperedpedestalDimensions") {
 			cylinderDimensions.hide();
 			fivesiderDimensions.show();
 		} else if (selector === "cylinderDimensions") {
@@ -144,6 +146,13 @@ $( document ).ready(function() {
 			cylinderDimensions.show();
 		}
 		
+	})
+	
+	$("#finishes").on("change", function() {
+		console.log("Finishes has been changed");
+		var finishChoice = $("#finishes").val().toLowerCase().split(" "),
+				selector = [];
+				console.log(finishChoice);
 	})
 	
 							
