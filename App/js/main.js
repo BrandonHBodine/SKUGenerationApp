@@ -139,12 +139,11 @@ $( document ).ready(function() {
 		if(selector === "fivesiderDimensions" || selector === "cubetableDimensions") {
 			cylinderDimensions.hide();
 			fivesiderDimensions.show();
-		} else {
+		} else if (selector === "cylinderDimensions") {
 			fivesiderDimensions.hide();
 			cylinderDimensions.show();
 		}
 		
-	
 	})
 	
 							
