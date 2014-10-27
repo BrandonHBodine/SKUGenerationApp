@@ -1,7 +1,7 @@
 var cylinder = {
 	// Variables set by Brad 
 	"laborRate" : 120,
-	"materialProfit" : 20/100,
+	"materialProfit" : 30/100,
 	"laminatePrice" : 1.92,
 	"veneerPrice" : 5.10,
 	"P95": 142.00,
