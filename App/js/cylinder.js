@@ -253,13 +253,14 @@ var cylinder = {
 												bottomAddOnPrice = cylinder[cylinder.bottomOptions[bottom]].price(diameter),
 												skuSuffix = cylinder[cylinder.topOptions[top]].suffix,
 												skuPrefix = cylinder[cylinder.bottomOptions[bottom]].prefix,
+												sizeString = (diameter).toString().replace(".", ""),
 												tbody = $("#price-table"),
 												row = $("<tr>").addClass("row-" + h),
 												sku = $("<td>").addClass("sku"),
 												size = $("<td>").addClass("size"),
 												price = $("<td>").addClass("price");						
 
-								sku.text(starter + skuSuffix + "-" + (diameter).toString() + color + "-" + (cylinder.standardHeights[h]).toString() + skuPrefix);
+								sku.text(starter + skuSuffix + "-" + sizeString + color + "-" + (cylinder.standardHeights[h]).toString() + skuPrefix);
 								price.text(x + topAddOnPrice + bottomAddOnPrice);
 								size.text( diameter + " x " + cylinder.standardHeights[h]);
 								row.append(sku);
