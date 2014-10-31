@@ -1,6 +1,6 @@
 var cylinder = {
 	// Variables set by Brad 
-	"laborRate" : 120,
+	"laborRate" : 100,
 	"materialProfit" : 30 / 100,
 	"laminatePrice" : 1.92,
 	"veneerPrice" : 5.10,
@@ -240,10 +240,10 @@ var cylinder = {
 				for (var h = 0; h < cylinder.standardHeights.length; h++) {
 					// Iterate through the hieghts
 					
-					for (var top = 0; top < cylinder.topOptions.length; top++) {
+						for (var top = 0; top < cylinder.topOptions.length; top++) {
 						// Top Options Interation
 						
-						for (var bottom = 0; bottom < cylinder.bottomOptions.length; bottom++) {
+							for (var bottom = 0; bottom < cylinder.bottomOptions.length; bottom++) {
 							// Bottom Options Iterations
 		
 							
