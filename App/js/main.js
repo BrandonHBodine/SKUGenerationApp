@@ -27,6 +27,9 @@ var types = $("#types"),
 		calcVersion,
 		globalSizes = "",
 		main = {
+			"inputGen" : function() {
+			var calculaterType 
+		},
 			
 		};
 		
