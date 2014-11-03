@@ -25,7 +25,10 @@ var types = $("#types"),
 		color,
 		option,
 		calcVersion,
-		globalSizes = "";
+		globalSizes = "",
+		main = {
+			
+		};
 		
 $( document ).ready(function() {
 	

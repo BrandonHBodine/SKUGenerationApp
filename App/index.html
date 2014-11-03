@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -28,21 +28,6 @@
 					<option><strong>Finish</strong></option>
 				</select>
 			</div>
-
-<!--
-<div class="col-md-3">
-<label for="footprints">Foot Prints</label>
-<select id="footprints" class="footprints" name="Foot Print">
-<option><strong>Foot Prints</strong></option>
-</select>
-</div>
-<div class="col-md-3">
-<label for="heights">Heights</label>
-<select id="heights" class="heights" name="Height">
-<option><strong>Heights</strong></option>
-</select>
-</div>
--->
 			</div>
 			<div class="row size">
 				<h2 class="text-center">Size Selection</h2>
@@ -124,15 +109,15 @@ Motorized Turntable
 					<h3>Step Ups</h3>
 					<div class="form-group">
 						<label>
-							<input name="turntable" type="radio" value="" checked>
+							<input name="turntable" type="radio" value="None" checked>
 							None
 						</label>
 						<label>
-							<input name="turntable" type="radio" value="">
+							<input name="turntable" type="radio" value="manualTurntable">
 							Manual Turntable
 						</label>
 						<label>
-							<input name="turntable" type="radio" value="">
+							<input name="turntable" type="radio" value="motorizedTurntable">
 							Motorized Turntable
 						</label>
 					</div>
@@ -143,45 +128,23 @@ Motorized Turntable
 			</div>
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
+					<h3>ToeKicks</h3>
+						<label>
+							<input name="turntable" type="radio" value="none" checked>
+							None
+						</label>
+						<label>
+							<input name="turntable" type="radio" value="matchingToekick">
+							Matching Toekick
+						</label>
+						<label>
+							<input name="turntable" type="radio" value="blackToekick">
+							Black Toekick
+						</label>
 					<div class="form-group">
 					</div>
 				</div>	
 			</div>
-<!-- This interface is not structured logiccally 
-<div class="row">
-<div class="col-md-12">
-<fieldset>
-<legend>Toekicks</legend>
-<input type="radio" name="toekick" value="None" id="NoToeKick" checked="checked">None
-<input type="radio" name="toekick" value="BlackToekick" id="BlackToekick">Black Toekick
-<input type="radio" name="toekick" value="MatchingToekick" id="MatchingToekick">Matching Toekick
-</fieldset>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12">
-<fieldset>
-<legend>Lighting</legend>
-<input type="radio" name="lighting" value="None" id="NoLights" checked="checked">None
-<input type="radio" name="lighting" value="Ambient" id="Ambient">Ambient
-<input type="radio" name="lighting" value="Spotlight" id="Spotlight">Spotlight
-<input type="radio" name="lighting" value="Overhead" id="Overhead">Overhead
-<input type="radio" name="lighting" value="TwoCornerLights" id="TwoCornerLights" >Two Corner Lights
-<input type="radio" name="lighting" value="FourCornerLights" id="FourCornerLights" >Four Corner Lights
-</fieldset>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12">
-<fieldset>
-<legend>Turn Tables</legend>
-<input type="radio" name="turntable" value="None" id="NoTurnTable" checked="checked">None
-<input type="radio" name="turntable" value="Manual" id="Manual" >Manual 
-<input type="radio" name="turntable" value="Motorized" id="Motorized" >Motorized
-</fieldset>
-</div>
-</div>
--->
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="form-group">
