@@ -181,6 +181,12 @@ Event Functions
 		});
 	}, // Generater End
 	
+	"addItem" : function (width, depth, height, material){
+		
+		
+	
+	}, //End Add Item
+	
 	"tableBuilder": function(){
 		
 		for (var i = 0; i < pedestal.standardWidthsAndDepths.length; i++) {

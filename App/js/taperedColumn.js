@@ -57,14 +57,14 @@ var taperedColumn = {
 		}
 		return packaging;
 	},
-	"melamineCalc" : function(width, depth, height) {
+	"melaminePriceCalc" : function(width, depth, height) {
 		var price = 0;
 		price = ((taperedColumn.laborHours(width, depth, height)*taperedColumn.laborRate)+(taperedColumn.materialCost(width, depth, height)*taperedColumn.melaminePrice*((taperedColumn.materialProfit+100)/100)+taperedColumn.packagingCost(width, depth, height)))*(100/(100-taperedColumn.melamineAllowance));
 		
 		return price;
 	
 	},
-	"veneerCalc" : function(width, depth, height) {
+	"veneerPriceCalc" : function(width, depth, height) {
 		var price = 0;
 		
 		price = ((taperedColumn.laborHours(width, depth, height)*taperedColumn.laborRate)+(taperedColumn.materialCost(width, depth, height)*taperedColumn.veneerPrice*((taperedColumn.materialProfit+100)/100)+taperedColumn.packagingCost(width, depth, height)))*(100/(100-taperedColumn.veneerAllowance));

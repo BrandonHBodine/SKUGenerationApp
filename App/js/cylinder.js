@@ -83,13 +83,13 @@ var cylinder = {
 		}
 		return packaging;
 	},
-	
-	"laminateCalc": function(diameter, height){	
+	/** PRICE CALCS **/
+	"laminatePriceCalc": function(diameter, height){	
 		var laminate = (cylinder.laborDollars(diameter, height) + cylinder.laminateMaterialCost(diameter, height) + cylinder.packagingCost(diameter, height));
 		return laminate; 
 	},
 	
-	"brushedAluminumCalc": function(diameter, height){
+	"aluminumPriceCalc": function(diameter, height){
 		
 		var brushedaluminum = cylinder.laminateCalc(diameter, height)+(((diameter+16)*(height+95))*0.00027*cylinder.laborRate)+(((diameter*diameter)+(diameter*3.1416*height))*(cylinder.laminatePrice*0.003542))*(1+cylinder.materialProfit);
 		
@@ -97,7 +97,7 @@ var cylinder = {
 		
 	},
 	
-	"veneerCalc": function(diameter, height){
+	"veneerPriceCalc": function(diameter, height){
 		var veneer = 0;
 		
 		if(cylinder.standardDiameters.indexOf(diameter) > -1 && cylinder.standardHeights.indexOf(height) > -1) {
@@ -113,7 +113,7 @@ var cylinder = {
 		return veneer;
 	},
 	
-	"dyedVeneerCalc": function(diameter, height){
+	"dyedVeneerPriceCalc": function(diameter, height){
 		var dyedVeneer = 0;
 		
 		if(cylinder.standardDiameters.indexOf(diameter) > -1 && cylinder.standardHeights.indexOf(height) > -1) {
@@ -129,7 +129,7 @@ var cylinder = {
 		return dyedVeneer;
 	},
 	
-	"zebraCalc": function(diameter, height){
+	"zebraPriceCalc": function(diameter, height){
 		var zebra = 0;
 		
 		if(cylinder.standardDiameters.indexOf(diameter) > -1 && cylinder.standardHeights.indexOf(height) > -1) {
