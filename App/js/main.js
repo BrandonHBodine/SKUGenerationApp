@@ -8,6 +8,7 @@ var types = $("#types"),
 		generateCylinder = $(".generate-cylinder"),
 		generateDustCover = $(".generate-dust-cover"),
 		generateCubeTable = $(".generate-cube-table"),
+		addItem = $(".add-item"),
 		clearTable = $(".clear-table"),
 		tr = $("tr"),
 		melamines = ["BL", "WH"],
@@ -25,13 +26,7 @@ var types = $("#types"),
 		color,
 		option,
 		calcVersion,
-		globalSizes = "",
-		main = {
-			"inputGen" : function() {
-			var calculaterType 
-		},
-			
-		};
+		globalSizes = "";			
 		
 $( document ).ready(function() {
 	
@@ -93,6 +88,7 @@ $( document ).ready(function() {
 	});
 	
 /* Event Listener for Gnerator functions */
+	/* For the Buttons */
 	generate.on("click", function(){
 		pedestal.generator();
 	});
@@ -109,9 +105,42 @@ $( document ).ready(function() {
 		dustCover.generator();
 	});
 	
-		generateCubeTable.on("click", function(){
+	generateCubeTable.on("click", function(){
 		cubeTable.generator();
 	});
+	
+	addItem.on("click", function(){
+		var typeOfCalc,
+				typeSelction = $('#types').val();
+		
+		if (typeSelction === "Cube Table") {
+			
+			typeOfCalc = cubeTable;
+			console.log("Type is Cube table");
+			
+		} else if (typeSelction === "Five Sider") {
+			
+			typeOfCalc = pedestal;
+			console.log("Type is Five Sider");
+			
+		} else if ( typeSelction === "Cylinder" ) {
+			
+			typeOfCalc = cylinder;
+			console.log("type of Cylinder");
+			
+		} else if ( typeSelction === "Tapered Pedestal" ) {
+			
+			typeOfCalc = taperedColumn;
+			console.log("Tapered Pedestal");
+		} else {
+		
+			console.log("No type Selected");
+			
+		}
+		
+		typeOfCalc.addItemToTable();
+	});
+		/* End for the Buttons*/
 	
 	$( "tr" ).on("click", function(){
 		$( this ).toggleClass("success");
@@ -160,6 +189,8 @@ $( document ).ready(function() {
 				selector = [];
 				console.log(finishChoice);
 	})
+	
+	/* End of Event Listener for Gnerator functions */
 	
 	/* Export to csv for the table found on stack overflow at http://stackoverflow.com/questions/16078544/export-to-csv-using-jquery-and-html */
 	

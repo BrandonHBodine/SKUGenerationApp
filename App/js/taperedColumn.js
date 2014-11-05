@@ -125,4 +125,14 @@ var taperedColumn = {
 		});
 		
 	}, // End Generator
+	
+		"addItemToTable" : function (){
+		var width = $('#Five_Sider_DimensionsWidth').val(),
+				depth = $('#Five_Sider_DimensionsDepth').val(),
+				height = $('#Five_Sider_DimensionsHeight').val(),
+//			Need to Isolate which calc will be used based on the material selected
+				calcVersion = "";
+				console.log("Shits ready to rock");
+			
+	} //End Add Item
 };

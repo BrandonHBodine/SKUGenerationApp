@@ -230,6 +230,15 @@ var cylinder = {
 		});
 	}, // Generater End
 	
+	"addItemToTable" : function (){
+		var width = $('#Five_Sider_DimensionsWidth').val(),
+				depth = $('#Five_Sider_DimensionsDepth').val(),
+				height = $('#Five_Sider_DimensionsHeight').val(),
+//			Need to Isolate which calc will be used based on the material selected
+				calcVersion = "";
+	
+	}, //End Add Item
+	
 	"tableBuilder": function(){
 		
 		for (var i = 0; i < cylinder.standardDiameters.length; i++) {

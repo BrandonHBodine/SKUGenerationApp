@@ -181,13 +181,36 @@ Event Functions
 		});
 	}, // Generater End
 	
-	"addItem" : function (){
-		var width = $('#Five_Sider_DimensionsWidth').val(),
+	"addItemToTable" : function (){
+		
+		var calcMaterial,
+				material = $('#finishes').val(),
+				width = $('#Five_Sider_DimensionsWidth').val(),
 				depth = $('#Five_Sider_DimensionsDepth').val(),
-				height = $('#Five_Sider_DimensionsHeight').val(),
+				height = $('#Five_Sider_DimensionsHeight').val();
+		
 //			Need to Isolate which calc will be used based on the material selected
-				calcVersion = "";
-	
+		if ( material === "Melimine") {
+			
+			calcMaterial = melaminePriceCalc;
+			
+		}	else if ( material === "Premium Laminate" ){
+			
+			calcMaterial = laminatePriceCalc;
+			
+		} else if ( material === "Brushed Aluminum" ){
+			
+			calcMaterial = aluminumPriceCalc;
+		
+		} else if ( material === "Wood Veneer" ) {
+		
+			calcMaterial = veenerPriceCalc;
+			
+		} else {
+			
+			console.log("Please pick a material ")
+			
+		}
 	}, //End Add Item
 	
 	"tableBuilder": function(){
