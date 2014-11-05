@@ -181,9 +181,12 @@ Event Functions
 		});
 	}, // Generater End
 	
-	"addItem" : function (width, depth, height, material){
-		
-		
+	"addItem" : function (){
+		var width = $('#Five_Sider_DimensionsWidth').val(),
+				depth = $('#Five_Sider_DimensionsDepth').val(),
+				height = $('#Five_Sider_DimensionsHeight').val(),
+//			Need to Isolate which calc will be used based on the material selected
+				calcVersion = "";
 	
 	}, //End Add Item
 	
