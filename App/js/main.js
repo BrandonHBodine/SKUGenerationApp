@@ -3,6 +3,7 @@ var types = $("#types"),
 		footprints = $("#footprints"),
 		heights = $("#heights"),
 		finishes = $("#finishes"),
+		materials = $("#materials"),
 		generate = $(".generate"),
 		generateTapered = $(".generate-tapered"),
 		generateCylinder = $(".generate-cylinder"),
@@ -71,21 +72,37 @@ $( document ).ready(function() {
 				}
 			});
 			
-			$.getJSON("json/finish.json", function(data) {
+			$.getJSON("json/material.json", function(data) {
 					
-					var finish = data.finish;
-					console.log(finish);
-					console.log(finish.length);
+					var material = data.material;
+					console.log(material);
+					console.log(material.length);
 				
-					for (var i = 0; i < finish.length; i++) {
+					for (var i = 0; i < material.length; i++) {
 						var option = $("<option>").addClass("finishOptions temp");
-						option.text(finish[i]);
-						option.val(finish[i]);
-						finishes.append(option);
+						option.text(material[i]);
+						option.val(material[i]);
+						materials.append(option);
 					}
 			});
 		}
 	});
+	
+	finishes.on("change", function() {
+		console.log("Finishes has been changed");
+		var finishChoice = $("#finishes").val().toLowerCase().split(" "),
+				selector = [];
+				console.log(finishChoice);
+	})
+	
+	materials.on("change", function(){
+		var selectedMaterial = materials.val().toLowerCase().replace(/ /g,'');
+		if(selectedMaterial !== "material") {
+			console.log("It's working but you have to pick something");
+		}
+	})
+	
+	
 	
 /* Event Listener for Gnerator functions */
 	/* For the Buttons */
@@ -183,12 +200,7 @@ $( document ).ready(function() {
 		
 	})
 	
-	$("#finishes").on("change", function() {
-		console.log("Finishes has been changed");
-		var finishChoice = $("#finishes").val().toLowerCase().split(" "),
-				selector = [];
-				console.log(finishChoice);
-	})
+
 	
 	/* End of Event Listener for Gnerator functions */
 	

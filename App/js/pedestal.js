@@ -17,6 +17,8 @@ var pedestal = {
 	"standardHeights" : [3, 6, 12, 18, 24, 30, 36, 42],
 	"topOptions" : ["N", "T", "L", "SL", "4L"],
 	"bottomOptions" : ["N", "TK", "TKBL"],
+	"currentMaterial" : "",
+	"currentFinish": "",
 	
 	"laborHours" : function(width, depth, height) {
 		var size = pedestal.isStandard(width, depth, height),
@@ -184,32 +186,38 @@ Event Functions
 	"addItemToTable" : function (){
 		
 		var calcMaterial,
-				material = $('#finishes').val(),
-				width = $('#Five_Sider_DimensionsWidth').val(),
-				depth = $('#Five_Sider_DimensionsDepth').val(),
-				height = $('#Five_Sider_DimensionsHeight').val();
+				material = $('#materials').val(),
+				width = parseFloat( $('#Five_Sider_DimensionsWidth').val() ),
+				depth = parseFloat( $('#Five_Sider_DimensionsDepth').val() ),
+				height = parseFloat( $('#Five_Sider_DimensionsHeight').val() );
 		
 //			Need to Isolate which calc will be used based on the material selected
-		if ( material === "Melimine") {
+		if (material === "material") {
 			
-			calcMaterial = melaminePriceCalc;
+			console.log("Please pick a material ");
 			
-		}	else if ( material === "Premium Laminate" ){
-			
-			calcMaterial = laminatePriceCalc;
-			
-		} else if ( material === "Brushed Aluminum" ){
-			
-			calcMaterial = aluminumPriceCalc;
+		} else { 
 		
-		} else if ( material === "Wood Veneer" ) {
-		
-			calcMaterial = veenerPriceCalc;
-			
-		} else {
-			
-			console.log("Please pick a material ")
-			
+			if ( material === "Melimine") {
+
+				calcMaterial = pedestal.melaminePriceCalc;
+
+			}	else if ( material === "Premium Laminate" ){
+
+				calcMaterial = pedestal.laminatePriceCalc;
+
+			} else if ( material === "Brushed Aluminum" ){
+
+				calcMaterial = pedestal.aluminumPriceCalc;
+
+			} else if ( material === "Wood Veneer" ) {
+
+				calcMaterial = pedestal.veenerPriceCalc;
+
+			} else {
+				console.log(" THis should appear because the dropdown has all the options already selected")
+				}
+			console.log(material);
 		}
 	}, //End Add Item
 	

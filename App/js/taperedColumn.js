@@ -87,7 +87,7 @@ var taperedColumn = {
 		
 		for (var m = 0; m < taperedColumn.melamines.length; m++){
 			
-			var calcVersion = taperedColumn.melamineCalc,
+			var calcVersion = taperedColumn.melaminePriceCalc,
 					starter = "TPDL",
 					color = taperedColumn.melamines[m];
 			

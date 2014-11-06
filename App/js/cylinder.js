@@ -91,7 +91,7 @@ var cylinder = {
 	
 	"aluminumPriceCalc": function(diameter, height){
 		
-		var brushedaluminum = cylinder.laminateCalc(diameter, height)+(((diameter+16)*(height+95))*0.00027*cylinder.laborRate)+(((diameter*diameter)+(diameter*3.1416*height))*(cylinder.laminatePrice*0.003542))*(1+cylinder.materialProfit);
+		var brushedaluminum = cylinder.laminatePriceCalc(diameter, height)+(((diameter+16)*(height+95))*0.00027*cylinder.laborRate)+(((diameter*diameter)+(diameter*3.1416*height))*(cylinder.laminatePrice*0.003542))*(1+cylinder.materialProfit);
 		
 		return brushedaluminum;
 		
@@ -191,7 +191,7 @@ var cylinder = {
 	"generator": function(){		
 		for (var m = 0; m < melamines.length; m++){
 			
-			calcVersion = cylinder.laminateCalc;
+			calcVersion = cylinder.laminatePriceCalc;
 			starter = "PDCL";
 			color = melamines[m];
 			cylinder.tableBuilder();
@@ -200,7 +200,7 @@ var cylinder = {
 		
 		for (var l = 0; l < laminates.length; l++){
 			
-			calcVersion = cylinder.laminateCalc;
+			calcVersion = cylinder.laminatePriceCalc;
 			starter = "PDCL";
 			color = laminates[l];
 			cylinder.tableBuilder();
@@ -208,7 +208,7 @@ var cylinder = {
 		
 		for (var b = 0; b < aluminums.length; b++){
 			
-			calcVersion = cylinder.brushedAluminumCalc;
+			calcVersion = cylinder.aluminumPriceCalc;
 			starter = "PDCL";
 			color = aluminums[b];
 			cylinder.tableBuilder();
@@ -217,7 +217,7 @@ var cylinder = {
 	
 		for (var v = 0; v < veneers.length; v++){
 			
-			calcVersion = cylinder.veneerCalc;
+			calcVersion = cylinder.veneerPriceCalc;
 			starter = "PDCV";
 			color = veneers[v];
 			cylinder.tableBuilder();
