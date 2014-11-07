@@ -202,6 +202,7 @@ Event Functions
 
 				calcMaterial = pedestal.melaminePriceCalc;
 
+
 			}	else if ( material === "Premium Laminate" ){
 
 				calcMaterial = pedestal.laminatePriceCalc;
@@ -209,7 +210,7 @@ Event Functions
 			} else if ( material === "Brushed Aluminum" ){
 
 				calcMaterial = pedestal.aluminumPriceCalc;
-
+				
 			} else if ( material === "Wood Veneer" ) {
 
 				calcMaterial = pedestal.veenerPriceCalc;
