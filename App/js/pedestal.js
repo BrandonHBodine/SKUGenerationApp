@@ -17,8 +17,8 @@ var pedestal = {
 	"standardHeights" : [3, 6, 12, 18, 24, 30, 36, 42],
 	"topOptions" : ["N", "T", "L", "SL", "4L"],
 	"bottomOptions" : ["N", "TK", "TKBL"],
-	"currentMaterial" : "",
-	"currentFinish": "",
+	//"currentMaterial" : "",
+	//"currentFinish": "",
 	
 	"laborHours" : function(width, depth, height) {
 		var size = pedestal.isStandard(width, depth, height),
