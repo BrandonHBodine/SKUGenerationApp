@@ -196,7 +196,7 @@ Event Functions
 		for (var t = 0; t < textured.length; t++){
 			
 			calcVersion = pedestal.texturedPriceCalc;
-			starter = "PDTX";
+			starter = "PDHD";
 			color = textured[t];
 			pedestal.tableBuilder();
 
