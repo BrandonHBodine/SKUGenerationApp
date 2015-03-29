@@ -3,16 +3,22 @@ var types = $("#types"),
 		footprints = $("#footprints"),
 		heights = $("#heights"),
 		finishes = $("#finishes"),
+		materials = $("#materials"),
 		generate = $(".generate"),
 		generateTapered = $(".generate-tapered"),
 		generateCylinder = $(".generate-cylinder"),
 		generateDustCover = $(".generate-dust-cover"),
+		generateCubeTable = $(".generate-cube-table"),
+		addItem = $(".add-item"),
 		clearTable = $(".clear-table"),
 		tr = $("tr"),
 		melamines = ["BL", "WH"],
-		laminates = ["BSG", "BLAL", "AT", "ST", "GT", "BGL", "WGL"],
+		laminates = ["BSG", "BLAL", "AT", "ST", "GT", "BGL", "WGL", "BC"],
 		aluminums = ["BAL", "CFL"],
 		veneers = ["WL", "CH", "OK", "MH", "EBWL", "ML", "ZB", "BN", "BC"],
+		textured = ["-ALOE", "-BASALT", "-CORTEZ", "-SILVERTON", "-SUMMIT", "-VAIL"],
+		topAddOns = [],
+		bottomAddOns = [],
 		selectedType = "",
 		width,
 		depth,
@@ -22,7 +28,7 @@ var types = $("#types"),
 		color,
 		option,
 		calcVersion,
-		globalSizes = "";
+		globalSizes = "";			
 		
 $( document ).ready(function() {
 	
@@ -67,23 +73,40 @@ $( document ).ready(function() {
 				}
 			});
 			
-			$.getJSON("json/finish.json", function(data) {
+			$.getJSON("json/material.json", function(data) {
 					
-					var finish = data.finish;
-					console.log(finish);
-					console.log(finish.length);
+					var material = data.material;
+					console.log(material);
+					console.log(material.length);
 				
-					for (var i = 0; i < finish.length; i++) {
+					for (var i = 0; i < material.length; i++) {
 						var option = $("<option>").addClass("finishOptions temp");
-						option.text(finish[i]);
-						option.val(finish[i]);
-						finishes.append(option);
+						option.text(material[i]);
+						option.val(material[i]);
+						materials.append(option);
 					}
 			});
 		}
 	});
 	
+	finishes.on("change", function() {
+		console.log("Finishes has been changed");
+		var finishChoice = $("#finishes").val().toLowerCase().split(" "),
+				selector = [];
+				console.log(finishChoice);
+	})
+	
+	materials.on("change", function(){
+		var selectedMaterial = materials.val().toLowerCase().replace(/ /g,'');
+		if(selectedMaterial !== "material") {
+			console.log("It's working but you have to pick something");
+		}
+	})
+	
+	
+	
 /* Event Listener for Gnerator functions */
+	/* For the Buttons */
 	generate.on("click", function(){
 		pedestal.generator();
 	});
@@ -99,6 +122,43 @@ $( document ).ready(function() {
 	generateDustCover.on("click", function(){
 		dustCover.generator();
 	});
+	
+	generateCubeTable.on("click", function(){
+		cubeTable.generator();
+	});
+	
+	addItem.on("click", function(){
+		var typeOfCalc,
+				typeSelction = $('#types').val();
+		
+		if (typeSelction === "Cube Table") {
+			
+			typeOfCalc = cubeTable;
+			console.log("Type is Cube table");
+			
+		} else if (typeSelction === "Five Sider") {
+			
+			typeOfCalc = pedestal;
+			console.log("Type is Five Sider");
+			
+		} else if ( typeSelction === "Cylinder" ) {
+			
+			typeOfCalc = cylinder;
+			console.log("type of Cylinder");
+			
+		} else if ( typeSelction === "Tapered Pedestal" ) {
+			
+			typeOfCalc = taperedColumn;
+			console.log("Tapered Pedestal");
+		} else {
+		
+			console.log("No type Selected");
+			
+		}
+		
+		typeOfCalc.addItemToTable();
+	});
+		/* End for the Buttons*/
 	
 	$( "tr" ).on("click", function(){
 		$( this ).toggleClass("success");
@@ -131,19 +191,76 @@ $( document ).ready(function() {
 		choiceArray.push("Dimensions");
 		selector = choiceArray.join("");
 		console.log(selector);
-		if(selector === "fivesiderDimensions" || selector === "cubetableDimensions") {
+		if(selector === "fivesiderDimensions" || selector === "cubetableDimensions" || selector === "taperedpedestalDimensions") {
 			cylinderDimensions.hide();
 			fivesiderDimensions.show();
-		} else {
+		} else if (selector === "cylinderDimensions") {
 			fivesiderDimensions.hide();
 			cylinderDimensions.show();
 		}
 		
-	
 	})
 	
-							
+
+	
+	/* End of Event Listener for Gnerator functions */
+	
+	/* Export to csv for the table found on stack overflow at http://stackoverflow.com/questions/16078544/export-to-csv-using-jquery-and-html */
+	
+	function exportTableToCSV($table, filename) {
+		
+    var $rows = $table.find('tr:has(td)'),
+
+			// Temporary delimiter characters unlikely to be typed by keyboard
+			// This is to avoid accidentally splitting the actual contents
+			tmpColDelim = String.fromCharCode(11), // vertical tab character
+			tmpRowDelim = String.fromCharCode(0), // null character
+
+			// actual delimiter characters for CSV format
+			colDelim = '","',
+			rowDelim = '"\r\n"',
+
+			// Grab text from table into CSV formatted string
+			csv = '"' + $rows.map(function (i, row) {
+					var $row = $(row),
+							$cols = $row.find('td');
+
+					return $cols.map(function (j, col) {
+							var $col = $(col),
+									text = $col.text();
+
+							return text.replace('"', '""'); // escape double quotes
+
+					}).get().join(tmpColDelim);
+
+			}).get().join(tmpRowDelim)
+					.split(tmpRowDelim).join(rowDelim)
+					.split(tmpColDelim).join(colDelim) + '"',
+
+			// Data URI
+			csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData>table'), 'export.csv']);
+
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
 });
+
+	
+							
+
 
 	
 

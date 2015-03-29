@@ -57,14 +57,14 @@ var taperedColumn = {
 		}
 		return packaging;
 	},
-	"melamineCalc" : function(width, depth, height) {
+	"melaminePriceCalc" : function(width, depth, height) {
 		var price = 0;
 		price = ((taperedColumn.laborHours(width, depth, height)*taperedColumn.laborRate)+(taperedColumn.materialCost(width, depth, height)*taperedColumn.melaminePrice*((taperedColumn.materialProfit+100)/100)+taperedColumn.packagingCost(width, depth, height)))*(100/(100-taperedColumn.melamineAllowance));
 		
 		return price;
 	
 	},
-	"veneerCalc" : function(width, depth, height) {
+	"veneerPriceCalc" : function(width, depth, height) {
 		var price = 0;
 		
 		price = ((taperedColumn.laborHours(width, depth, height)*taperedColumn.laborRate)+(taperedColumn.materialCost(width, depth, height)*taperedColumn.veneerPrice*((taperedColumn.materialProfit+100)/100)+taperedColumn.packagingCost(width, depth, height)))*(100/(100-taperedColumn.veneerAllowance));
@@ -87,7 +87,7 @@ var taperedColumn = {
 		
 		for (var m = 0; m < taperedColumn.melamines.length; m++){
 			
-			var calcVersion = taperedColumn.melamineCalc,
+			var calcVersion = taperedColumn.melaminePriceCalc,
 					starter = "TPDL",
 					color = taperedColumn.melamines[m];
 			
@@ -125,4 +125,14 @@ var taperedColumn = {
 		});
 		
 	}, // End Generator
+	
+		"addItemToTable" : function (){
+		var width = $('#Five_Sider_DimensionsWidth').val(),
+				depth = $('#Five_Sider_DimensionsDepth').val(),
+				height = $('#Five_Sider_DimensionsHeight').val(),
+//			Need to Isolate which calc will be used based on the material selected
+				calcVersion = "";
+				console.log("Shits ready to rock");
+			
+	} //End Add Item
 };

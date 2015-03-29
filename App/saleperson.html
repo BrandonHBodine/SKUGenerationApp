@@ -1,85 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SKU PRICE GENERATOR</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Xylem Custom Quote Calculator</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container">
+		<form id="priceGen">
 		<div class="row">
 			<h1 class="text-center">Xylem Price Updater</h1>
 			<p class="text-center">Based of Calculators by Brad Littrell</p>
 		</div>
 		<div class="row">
-			<div class="col-md-3">
-				<form id="priceGen">
-					<label for="types">Types</label>	
-					<select id="types" class="types" name="Type">
+			<div class="col-md-2 col-md-offset-4">
+					<label for="types">Type</label>	
+						<select id="types" class="types full" name="Type">
 						<option><strong>Type of Pedestal</strong></option>
-					</select>
-				</div>
-				<div class="col-md-3">
-							<label for="finishes">Types</label>	
-					<select id="finishes" class="finish" name="Finish">
-						<option><strong>Finish</strong></option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<label for="footprints">Foot Prints</label>
-					<select id="footprints" class="footprints" name="Foot Print">
-						<option><strong>Foot Prints</strong></option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<label for="heights">Heights</label>
-					<select id="heights" class="heights" name="Height">
-						<option><strong>Heights</strong></option>
-					</select>
+				</select>
+			</div>
+			<div class="col-md-2 center-block">
+				<label for="finishes">Material</label>	
+				<select id="finishes" class="finish full" name="Finish">
+					<option><strong>Finish</strong></option>
+				</select>
+			</div>
+		</div>
+		<div class="row size">
+			<h2 class="text-center">Size Selection</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-4">
+				<fieldset>
+					<div class="form-group fivesiderDimensions visible-dimension">
+						<label for="Five_Sider_Dimensions[]"><strong>Dimensions For Five Sider / Rectangle / Square (Inches) </strong></label><br>
+						<input name="Five_Sider_Dimensions[]" type="number" min="1" max="9999" step="1" id="Five_Sider_DimensionsWidth" value="Width"> Width
+						<input name="Five_Sider_Dimensions[]" type="number" min="1" max="9999" step="1" id="Five_Sider_DimensionsDepth" value="Depth"> Depth
+						<input name="Five_Sider_Dimensions[]" type="number" min="1" max="9999" step="1" id="Five_Sider_DimensionsHeight" value="Height"> Height
+					</div>
+					<div class="form-group cylinderDimensions" hidden="hidden">
+						<label for="Cylinder_Dimensions[]"><strong>Dimensions For Cylinder (Inches)</strong></label><br>
+						<input name="Cylinder_Dimensions[]" type="number" min="1" max="9999" step="1" id="Cylinder_DimensionsDiameter" value="Width"> Diameter
+						<input name="Cylinder_Dimensions[]" type="number" min="1" max="9999" step="1" id="Cylinder_DimensionsHeight " value="Height"> Height 
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="row">
+			<h2 class="text-center">Tops Add Ons</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-md-offset-2">
+				<h3>Turntable</h3>
+				<div class="form-group">
+					<label>
+						<input name="turntable" type="radio" value="" checked>
+None
+					</label>
+					<label>
+						<input name="turntable" type="radio" value="">
+Manual Turntable
+					</label>
+					<label>
+						<input name="turntable" type="radio" value="">
+Motorized Turntable
+					</label>
 				</div>
 			</div>
-
-			<label for="addons"></label>
-				<fieldset>
-					<legend>Toekicks</legend>
-						<input type="radio" name="toekick" value="None" checked="checked">None
-						<input type="radio" name="toekick" value="Black Toekick" >Black Toekick
-						<input type="radio" name="toekick" value="Matching Toekick" >Matching Toekick
-				</fieldset>
-				<fieldset>
-					<legend>Lighting</legend>
-						<input type="radio" name="lighting" value="None" checked="checked">None
-						<input type="radio" name="lighting" value="Ambient" >Ambient
-						<input type="radio" name="lighting" value="Spotlight" >Spotlight
-						<input type="radio" name="lighting" value="Overhead" >Overhead
-						<input type="radio" name="lighting" value="Two Corner Lights" >Two Corner Lights
-						<input type="radio" name="lighting" value="Four Corner Lights" >Four Corner Lights
-				</fieldset>
-				<fieldset>
-					<legend>Turn Tables</legend>
-						<input type="radio" name="turntable" value="None" checked="checked">None
-						<input type="radio" name="turntable" value="Manual" >Manual 
-						<input type="radio" name="turntable" value="Motorized" >Motorized
-				</fieldset>
-
-			<label for="types">Percent Off</label>
-			<input type="number" name="% Off" min="0" max="30" step="1" placeholder="0">
-		</form>
-		<section>
-			<button class="generate btn btn-defaul">Generate Five Siders</button>
-			<button class="generate-cylinders btn btn-defaul">Generate Cylinders</button>
-			<button class="generater-tapered btn btn-defaul">Generate Tapered</button>
-			<button class="generater-dust-cover btn btn-defaul">Generate Dust Covers</button>
-			<table class="table table-hover">
-				<tbody id="price-table">
-					<tr>
-						<th class="sku">SKU</th>
-						<th class="size">SIZE</th>
-						<th class="price">PRICE</th>
-					</tr>
-				</tbody>
-			</table>
+			<div class="col-md-4">
+				<h3>Lighting</h3>
+				<div class="row">
+					<div class="form-group">
+						<label>
+							<input type="checkbox" value="" checked>
+							None
+						</label>
+						<label>
+							<input type="checkbox" value="">
+							Ambient
+						</label>
+						<label>
+							<input type="checkbox" value="">
+							Spot
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<label>
+							<input type="checkbox" value="">
+							2 Corner
+						</label>
+						<label>
+							<input type="checkbox" value="">
+							4 Corner
+						</label>
+						<label>
+							<input type="checkbox" value="">
+							Over head
+						</label>	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<h3>Step Ups</h3>
+				<div class="form-group">
+					<label>
+						<input name="turntable" type="radio" value="" checked>
+						None
+					</label>
+					<label>
+						<input name="turntable" type="radio" value="">
+						Manual Turntable
+					</label>
+					<label>
+						<input name="turntable" type="radio" value="">
+						Motorized Turntable
+					</label>
+				</div>
+			</div>
+		</div>	
+		<div class="row">
+			<h2 class="text-center">Bottom Add Ons</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="form-group">
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="form-group">
+					<label for="types">Percent Off</label>
+					<input type="number" name="% Off" min="0" max="30" step="1" placeholder="0">
+				</div>
+			</div>
+		</div>
+	</form>
+	<section>
+		<button class="clear-table btn btn-warning">Clear</button>
+			<a href="#" class="export"><button class="btn btn-warning">Export</button></a>
+			<div id="dvData">
+				<table class="table table-responsive table-hover">
+					<tbody id="price-table">
+						<tr>
+							<th class="sku">SKU</th>
+							<th class="size">SIZE</th>
+							<th class="price">PRICE</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</section>
 	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -88,5 +163,7 @@
 	<script src="js/cylinder.js"></script>
 	<script src="js/taperedColumn.js"></script>
 	<script src="js/dustCover.js"></script>
+	<script src="js/cubeTable.js"></script>
 </body>
 </html>
+

@@ -4,6 +4,7 @@ var pedestal = {
 	"melaminePrice" : 0.75,
 	"laminatePrice" : 3.28,
 	"veneerPrice" : 5.30,
+	"texturedPrice" : 1.96,
 	"customsSizeVar" : 1.80,
 	"customsSizeVar2": 13,
 	"standardSizeVar" : 1.9364,
@@ -11,12 +12,15 @@ var pedestal = {
 	"LamAllowance" : 30,
 	"woodVeneerAllowance" : 20,
 	"alumAllowance" : 30,
+	"texturedAllowance" : 30,
 	"standardSizes" : [104,108,112,116,120,158,161,167,173,179,185,191,197,258,261,267,273,279,285,291,297,363,366,372,378,384,390,396,402,443,446,452,458,464,470,476,482,578,581,587,593,599,605,611,617],	
 "standardSizesPrice" : [2.25,2.25,2.5,2.75,3,7.65,7.65,7.65,8.16,8.67,9.18,9.69,10.2,11.9,11.9,11.9,11.9,12.72,13.55,14.38,15.2,17.61,17.61,17.61,17.61,19.08,20.55,22.02,23.48,18,18,18,18,19.5,21,22.5,24,21,21,21,21,23.75,25.5,27.75,28],
 	"standardWidthsAndDepths" : [11.5, 15, 18, 20, 23],
 	"standardHeights" : [3, 6, 12, 18, 24, 30, 36, 42],
 	"topOptions" : ["N", "T", "L", "SL", "4L"],
 	"bottomOptions" : ["N", "TK", "TKBL"],
+	//"currentMaterial" : "",
+	//"currentFinish": "",
 	
 	"laborHours" : function(width, depth, height) {
 		var size = pedestal.isStandard(width, depth, height),
@@ -103,6 +107,19 @@ var pedestal = {
 		
 		return (Math.round( price * 100))/100;
 	},
+	
+	"texturedPriceCalc" : function(width, depth, height, option){
+		var laborCalc = ( pedestal.laborHours(width, depth, height) * pedestal.laborRate ),
+				materialsCalc = ( pedestal.materialFoot(width, depth, height) * pedestal.texturedPrice ),
+				profitCalc = ( 1 + (pedestal.materialProfit)/100 ),
+				packagingCalc = ( pedestal.packaging(width, depth, height) ),
+				salesCalc = ( 100 / (100 - pedestal.texturedAllowance - pedestal.customsSizeVar2)),
+				price = (laborCalc + materialsCalc * profitCalc + packagingCalc ) * ( salesCalc ) * pedestal.nonStandardSizeCorrection(width, depth, height);
+		
+		return (Math.round( price * 100))/100;
+	},
+	
+
 /********************************************************************************************************************Add on pricing Calculators	********************************************************************************************************************/
 
 	/* Lighting Functions */
@@ -141,11 +158,6 @@ Standard Sizes need to be calculated by Math.floor((width*depth)+(width+depth)+h
 Event Functions
 ******************************************************************************************************************************/
 	"generator": function(){		
-		/*
-		event.preventDefault();
-		event.stopPropagation();
-		*/
-
 		for (var m = 0; m < melamines.length; m++){
 			
 			calcVersion = pedestal.melaminePriceCalc;
@@ -179,12 +191,60 @@ Event Functions
 			color = veneers[v];
 			pedestal.tableBuilder();
 
-		} // Venner Loop End
+		} // Veneer Loop End
+		
+		for (var t = 0; t < textured.length; t++){
+			
+			calcVersion = pedestal.texturedPriceCalc;
+			starter = "PDHD";
+			color = textured[t];
+			pedestal.tableBuilder();
+
+		} // Textured Loop End
 		// Event Handler add for the new elements
 		$( "tr" ).on("click", function(){
 			$( this ).toggleClass("success");
 		});
 	}, // Generater End
+	
+	"addItemToTable" : function (){
+		
+		var calcMaterial,
+				material = $('#materials').val(),
+				width = parseFloat( $('#Five_Sider_DimensionsWidth').val() ),
+				depth = parseFloat( $('#Five_Sider_DimensionsDepth').val() ),
+				height = parseFloat( $('#Five_Sider_DimensionsHeight').val() );
+		
+//			Need to Isolate which calc will be used based on the material selected
+		if (material === "material") {
+			
+			console.log("Please pick a material ");
+			
+		} else { 
+		
+			if ( material === "Melimine") {
+
+				calcMaterial = pedestal.melaminePriceCalc;
+
+
+			}	else if ( material === "Premium Laminate" ){
+
+				calcMaterial = pedestal.laminatePriceCalc;
+
+			} else if ( material === "Brushed Aluminum" ){
+
+				calcMaterial = pedestal.aluminumPriceCalc;
+				
+			} else if ( material === "Wood Veneer" ) {
+
+				calcMaterial = pedestal.veenerPriceCalc;
+
+			} else {
+				console.log(" THis should appear because the dropdown has all the options already selected")
+				}
+			console.log(material);
+		}
+	}, //End Add Item
 	
 	"tableBuilder": function(){
 		
